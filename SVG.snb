@@ -1,0 +1,61 @@
+{
+  "metadata":{
+    "name":"SVG",
+    "user_save_timestamp":"2013-04-11T02:37:52.000Z",
+    "auto_save_timestamp":"2013-04-11T03:18:10.080Z"
+  },
+  "worksheets":[{
+    "cells":[{
+      "cell_type":"code",
+      "input":"val pts = for (x <- -10 to 10) yield (x, x*x/10)",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":3,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"new Circles(pts)\n  ",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":4,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"",
+      "language":"scala",
+      "collapsed":true,
+      "outputs":[]
+    }]
+  }],
+  "autosaved":[{
+    "cells":[{
+      "cell_type":"code",
+      "input":"val pts = for (x <- -10d to 10 by .1) yield (x, x*x/10)",
+      "language":"scala",
+      "collapsed":true,
+      "prompt_number":1,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"Circles(pts)",
+      "language":"scala",
+      "collapsed":true,
+      "prompt_number":7,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"Circles { for (x <- 0d to 8*math.Pi by .1) yield (x, 2*math.cos(x*1)) }",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":18,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"",
+      "language":"scala",
+      "collapsed":true,
+      "outputs":[]
+    }]
+  }],
+  "nbformat":3
+}
