@@ -13,4 +13,6 @@ trait SVG {
 
   val width = "400px"
   val height = "200px"
+
+  val color = "#53A0C6"
 }
