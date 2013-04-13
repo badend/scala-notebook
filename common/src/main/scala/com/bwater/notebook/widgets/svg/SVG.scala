@@ -1,6 +1,7 @@
-package com.bwater.notebook.widgets
+package com.bwater.notebook.widgets.svg
 
 import com.bwater.notebook._
+import widgets._
 
 trait SVG {
   def data: Seq[(Double, Double)]

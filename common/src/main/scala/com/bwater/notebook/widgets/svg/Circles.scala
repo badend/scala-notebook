@@ -1,6 +1,6 @@
-package com.bwater.notebook.widgets
+package com.bwater.notebook.widgets.svg
 
-import com.bwater.notebook._
+import com.bwater.notebook._, widgets._
 
 case class Circles(data: Seq[(Double, Double)]) extends Widget with SVG {
 
