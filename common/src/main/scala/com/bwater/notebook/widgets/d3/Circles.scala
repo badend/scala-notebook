@@ -6,27 +6,35 @@ import net.liftweb.json.JsonAST.{JValue, JArray, JInt}
 import net.liftweb.json.JsonDSL._
 import net.liftweb.json.DefaultFormats
 
-case class Circles(data: Seq[(Double, Double)]) extends Widget with svg.SVG {
+case class Circles(data: Seq[Double]) extends Widget with D3 {
 
   lazy val toHtml =
-    <svg width={ width } height={ height } version="1.1"
-         viewBox={ viewbox }
-         class="circles"
-         xmlns="http://www.w3.org/2000/svg">
-    <g transform="scale(1, -1)"> {
+    <div class="d3_circles">
+    {
       scopedScript("""
 require(['d3'], function(d3) {
-  var g = d3.selectAll('svg.circles g');
+  var w = %d;
+  var h = %d;
+
+  var max   = d3.max(data);
+  var x     = d3.scale.linear().domain([0, data.length - 1]).range([0, w]);
+  var y     = d3.scale.linear().domain([0, max]).range([h, 0]);
+
+  var g = d3.select('div.d3_circles')
+    .append('svg:svg')
+      .attr('width', w)
+      .attr('height', h);
+
   g.selectAll('circle')
     .data(data)
   .enter().append('circle')
-    .attr('cx', function(d) { return d.x })
-    .attr('cy', function(d) { return d.y })
-    .attr('r', '%s')
+    .attr('cx', function(d, i) { return x(i); })
+    .attr('cy', y)
+    .attr('r', '2')
     .attr('fill', '%s')
 });
-""".format((sz / 100).toString, color), (
-        "data" -> (for ((x,y) <- data) yield ("x" -> x) ~ ("y" -> y))
-      ))
-    } </g> </svg>
+""".format(width, height, color),
+        ("data" -> data)
+      )
+    } </div>
 }
