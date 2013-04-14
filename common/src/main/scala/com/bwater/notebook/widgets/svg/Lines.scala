@@ -2,20 +2,18 @@ package com.bwater.notebook.widgets.svg
 
 import com.bwater.notebook._, widgets._
 
-case class Lines(data: Seq[(Double, Double)]) extends Widget with SVG {
+case class Lines(data: Seq[Double]) extends Widget with SVG {
   val points =
-    for (pt <- data)
-    yield pt._1 + "," + pt._2
+    for ((y,x) <- data.zipWithIndex)
+    yield x + "," + y
 
   lazy val toHtml =
-    <svg width={ width } height={ height } version="1.1"
+    <svg width={ width.toString } height={ height.toString } version="1.1"
          viewBox={ viewbox }
          xmlns="http://www.w3.org/2000/svg">
-    <g transform="scale(1, -1)"> {
-      data.map { case(x, y) =>
-          <polyline points={ points.mkString(" ") } 
-           stroke-width={ (sz / 50).toString }
-           stroke={ color } fill="none" />
-      }
-    } </g> </svg>
+    <g transform="scale(1, -1)">
+      <polyline points={ points.mkString(" ") }
+                stroke-width={ (sz * 2).toString }
+                stroke={ color } fill="none" />
+    </g> </svg>
 }
