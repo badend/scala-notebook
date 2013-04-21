@@ -9,21 +9,20 @@ import net.liftweb.json.DefaultFormats
 case class Circles(data: Seq[Double]) extends Widget with D3 {
 
   lazy val toHtml =
-    <div class="d3_circles">
+    <svg width={ width.toString } height={ height.toString }
+         xmlns="http://www.w3.org/2000/svg" version="1.1">
     {
       scopedScript("""
 require(['d3'], function(d3) {
-  var w = %d;
-  var h = %d;
-
   var max   = d3.max(data);
-  var x     = d3.scale.linear().domain([0, data.length - 1]).range([0, w]);
-  var y     = d3.scale.linear().domain([0, max]).range([h, 0]);
+  var x     = d3.scale.linear()
+                .domain([0, data.length - 1])
+                .range([0, width]);
+  var y     = d3.scale.linear()
+                .domain([0, max])
+                .range([height, 0]);
 
-  var g = d3.select('div.d3_circles')
-    .append('svg:svg')
-      .attr('width', w)
-      .attr('height', h);
+  var g = d3.select(this); // our svg element
 
   g.selectAll('circle')
     .data(data)
@@ -31,10 +30,13 @@ require(['d3'], function(d3) {
     .attr('cx', function(d, i) { return x(i); })
     .attr('cy', y)
     .attr('r', '2')
-    .attr('fill', '%s')
+    .attr('fill', color)
 });
-""".format(width, height, color),
-        ("data" -> data)
+""",
+        ("data" -> data) ~
+        ("width" -> width) ~
+        ("height" -> height) ~
+        ("color" -> color)
       )
-    } </div>
+    } </svg>
 }
