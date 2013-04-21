@@ -9,6 +9,7 @@ package com.bwater.notebook
 
 import net.liftweb.json.DefaultFormats
 import net.liftweb.json.JsonAST._
+import net.liftweb.json.JsonDSL._
 import org.slf4j.LoggerFactory
 
 /**
@@ -27,6 +28,10 @@ object JsonCodec {
   val ints = new Codec[JValue, Int] {
     def decode(t: Int) = JInt(t)
     def encode(v: JValue):Int = v.extract[Int]
+  }
+  val doubleSeq = new Codec[JValue, Seq[Double]] {
+    def decode(t: Seq[Double]): JValue = t
+    def encode(v: JValue) = for (JDouble(d) <- v) yield d
   }
   val strings = new Codec[JValue, String] {
     def decode(t: String):JValue = {
