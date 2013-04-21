@@ -2,7 +2,7 @@
   "metadata":{
     "name":"D3",
     "user_save_timestamp":"2013-04-13T17:36:37.213Z",
-    "auto_save_timestamp":"2013-04-21T14:01:21.976Z"
+    "auto_save_timestamp":"2013-04-21T17:31:20.576Z"
   },
   "worksheets":[{
     "cells":[{
@@ -19,21 +19,28 @@
       "input":"val circles = d3.Circles { for (x <- -10d to 10 by .1) yield x*x }",
       "language":"scala",
       "collapsed":false,
-      "prompt_number":12,
+      "prompt_number":3,
       "outputs":[]
     },{
       "cell_type":"code",
-      "input":"circles",
+      "input":"circles.currentData <-- Connection.just(for (x <- -10d to 10 by .1) yield -x*x)",
       "language":"scala",
       "collapsed":false,
-      "prompt_number":13,
+      "prompt_number":8,
       "outputs":[]
     },{
       "cell_type":"code",
-      "input":"d3.Circles { for (x <- 0d to 10 by .1) yield x*x/10 }",
+      "input":"circles.currentData <-- Connection.just(for (x <- 0d to 2*math.Pi by .01) yield math.sin(x))",
       "language":"scala",
       "collapsed":false,
-      "prompt_number":14,
+      "prompt_number":9,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"circles.currentData <-- Connection.just(for (x <- 0d to 8*math.Pi by .01) yield math.sin(x))",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":10,
       "outputs":[]
     },{
       "cell_type":"code",

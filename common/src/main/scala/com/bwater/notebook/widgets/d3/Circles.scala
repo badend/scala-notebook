@@ -19,23 +19,27 @@ require(['observable','knockout','d3'], function(Observable, ko, d3) {
   console.log("going to make " + dataId + " observable");
   var dataO = Observable.makeObservableArray(dataId);
   dataO.subscribe(function(data) {
-    var max   = d3.max(data);
     var x     = d3.scale.linear()
                   .domain([0, data.length - 1])
                   .range([0, width]);
     var y     = d3.scale.linear()
-                  .domain([0, max])
+                  .domain([d3.min(data), d3.max(data)])
                   .range([height, 0]);
 
-    var g = d3.select(this); // our svg element
+    var svg = d3.select(this); // our svg element
 
-    g.selectAll('circle')
-      .data(data)
-    .enter().append('circle')
+    var g = svg.selectAll('circle').data(data);
+    g.transition()
       .attr('cx', function(d, i) { return x(i); })
-      .attr('cy', y)
-      .attr('r', '2')
-      .attr('fill', color);
+      .attr('cy', y);
+    g.enter().append('circle')
+        .attr('cx', width)
+        .attr('cy', y)
+        .attr('r', '5')
+        .attr('fill', color)
+      .transition()
+        .attr('cx', function(d, i) { return x(i); });
+    g.exit().remove();
   }, this); // `this` is the parent svg element
   dataO(dataInit);
 });
