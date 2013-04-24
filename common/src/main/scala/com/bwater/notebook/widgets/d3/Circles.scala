@@ -16,7 +16,6 @@ case class Circles(data: Seq[Double]) extends Widget with D3 {
     {
       scopedScript("""
 require(['observable','knockout','d3'], function(Observable, ko, d3) {
-  console.log("going to make " + dataId + " observable");
   var dataO = Observable.makeObservableArray(dataId);
   dataO.subscribe(function(data) {
     var x     = d3.scale.linear()
