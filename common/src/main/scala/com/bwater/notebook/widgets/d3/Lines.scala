@@ -29,9 +29,11 @@ require(['observable','knockout','d3'], function(Observable, ko, d3) {
         .x( function(d, i) { return x(i); } )
         .y(y);
 
-    var g = d3.select(this); // our svg element
-    g.append('path')
-        .attr('d', line(data))
+    var svg = d3.select(this);
+    var g = svg.selectAll('path').data([data]);
+    g.transition().attr('d', line);
+    g.enter().append('path')
+        .attr('d', line)
         .attr('fill', 'none')
         .attr('stroke', color)
         .attr('stroke-width', 4);
