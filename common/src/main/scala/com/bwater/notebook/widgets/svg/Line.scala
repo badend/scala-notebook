@@ -2,7 +2,7 @@ package com.bwater.notebook.widgets.svg
 
 import com.bwater.notebook._, widgets._
 
-case class Lines(data: Seq[Double]) extends Widget with SVG {
+case class Line(data: Seq[Double]) extends Widget with SVG {
   val points =
     for ((y,x) <- data.zipWithIndex)
     yield x + "," + y
