@@ -2,7 +2,7 @@
   "metadata":{
     "name":"D3",
     "user_save_timestamp":"2013-04-24T12:44:18.835Z",
-    "auto_save_timestamp":"2013-04-25T02:00:15.002Z"
+    "auto_save_timestamp":"2013-05-04T22:03:30.806Z"
   },
   "worksheets":[{
     "cells":[{
@@ -54,42 +54,42 @@
       "input":"val circles = d3.Circles { for (x <- -10d to 10 by .1) yield x*x }",
       "language":"scala",
       "collapsed":false,
-      "prompt_number":5,
+      "prompt_number":22,
       "outputs":[]
     },{
       "cell_type":"code",
       "input":"circles.currentData <-- Connection.just(for (x <- -10d to 10 by .1) yield -x*x)",
       "language":"scala",
       "collapsed":false,
-      "prompt_number":6,
+      "prompt_number":23,
       "outputs":[]
     },{
       "cell_type":"code",
-      "input":"circles.currentData <-- Connection.just(for (x <- 0d to 2*math.Pi by .01) yield math.sin(x))",
+      "input":"val line = d3.Line { for (x <- 0d to 8*math.Pi by .01) yield math.sin(x) }",
       "language":"scala",
       "collapsed":false,
-      "prompt_number":7,
-      "outputs":[]
-    },{
-      "cell_type":"code",
-      "input":"circles.currentData <-- Connection.just(for (x <- 0d to 8*math.Pi by .01) yield math.sin(x))",
-      "language":"scala",
-      "collapsed":false,
-      "prompt_number":8,
-      "outputs":[]
-    },{
-      "cell_type":"code",
-      "input":"val line = d3.Line { for (x <- 0d to 8*math.Pi by .1) yield math.sin(x) }",
-      "language":"scala",
-      "collapsed":false,
-      "prompt_number":1,
+      "prompt_number":24,
       "outputs":[]
     },{
       "cell_type":"code",
       "input":"line.currentData <-- Connection.just(for (x <- 0d to 4*math.Pi by .01) yield math.sin(x))",
       "language":"scala",
       "collapsed":false,
-      "prompt_number":3,
+      "prompt_number":26,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"val plot = d3.Plot { for (x <- 0d to 2*math.Pi by .01) yield (x, math.sin(x)) }",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":27,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"plot.currentData <-- Connection.just(for (x <- 0d to 2*math.Pi by .01) yield (x, math.cos(x)))",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":30,
       "outputs":[]
     },{
       "cell_type":"code",
