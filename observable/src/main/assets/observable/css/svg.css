@@ -1,0 +1,10 @@
+svg {
+    width: 800px;
+    height: 200px;
+}
+
+svg.plot path {
+    fill: none;
+    stroke: #53A0C6;
+    stroke-width: 4;
+}

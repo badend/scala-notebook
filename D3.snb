@@ -2,7 +2,7 @@
   "metadata":{
     "name":"D3",
     "user_save_timestamp":"2013-04-24T12:44:18.835Z",
-    "auto_save_timestamp":"2013-05-05T02:53:26.580Z"
+    "auto_save_timestamp":"2013-05-05T03:52:57.511Z"
   },
   "worksheets":[{
     "cells":[{
@@ -54,14 +54,14 @@
       "input":"val plot = d3.Plot { for (x <- 0d to 2*math.Pi by .1) yield (x, math.sin(x)) }",
       "language":"scala",
       "collapsed":false,
-      "prompt_number":10,
+      "prompt_number":2,
       "outputs":[]
     },{
       "cell_type":"code",
       "input":"plot.currentData <-- Connection.just(for (x <- 0d to 2*math.Pi by .1) yield (x, math.cos(x)))",
       "language":"scala",
       "collapsed":false,
-      "prompt_number":17,
+      "prompt_number":5,
       "outputs":[]
     },{
       "cell_type":"code",

@@ -226,6 +226,7 @@ curl({
     jquery: 'static/jquery/js/jquery',
     knockout: 'static/knockout',
     d3: 'js/d3-shim',
+    svg: 'css/svg.css',
     resources: '',
     observable: 'js/observable',
     equiv: 'js/equiv',
