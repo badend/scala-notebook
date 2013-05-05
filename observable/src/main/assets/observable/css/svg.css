@@ -1,4 +1,4 @@
-svg {
+svg.plot {
     width: 800px;
     height: 200px;
 }
@@ -7,4 +7,9 @@ svg.plot path {
     fill: none;
     stroke: #53A0C6;
     stroke-width: 4;
+}
+
+svg.plot .x.axis line, svg.plot .x.axis path {
+  fill: none;
+  stroke: #000;
 }

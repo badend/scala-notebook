@@ -24,6 +24,11 @@ define(['observable', 'jquery', 'knockout', 'd3', 'css!svg'], (Observable, $, ko
       g = svg.selectAll('path').data([data])
       g.transition().attr('d', line)
       g.enter().append('path').attr('d', line)
+
+      xAxis = d3.svg.axis().scale(xScale)
+      svg.append("svg:g")
+          .attr("class", "x axis")
+          .call(xAxis)
     )
     dataO(@dataInit)
 )
