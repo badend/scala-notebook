@@ -1,30 +1,24 @@
-svg.d3.circles circle {
+svg.d3.circles circle, svg.d3.plot path.datapoint {
     fill: #53A0C6;
 }
 
-svg.d3.line path {
+svg.d3.line path, svg.d3.plot path.dataline {
     fill: none;
     stroke: #53A0C6;
     stroke-width: 4;
 }
 
-svg.plot path {
-    fill: none;
-    stroke: #53A0C6;
-    stroke-width: 4;
-}
-
-svg.plot .axis line {
+svg.d3.plot .axis line {
     stroke-width: 1;
     fill: none;
     stroke: #B3B3B3;
     opacity: 0.7;
 }
 
-svg.plot .axis .domain {
+svg.d3.plot .axis .domain {
     stroke-width: 0;
 }
-svg.plot .axis text {
+svg.d3.plot .axis text {
     font-size: 80%;
     fill: #222;
 }

@@ -2,14 +2,14 @@ package com.bwater.notebook.widgets.d3
 
 import com.bwater.notebook._, widgets._
 
-import net.liftweb.json.JsonAST.{JValue, JArray, JInt}
 import net.liftweb.json.JsonDSL._
-import net.liftweb.json.DefaultFormats
-
 
 case class Plot(plottable: Plottable,
                 width: Int = 800,
-                height: Int = 200) extends Widget {
+                height: Int = 200,
+                line: Boolean = true,
+                points: Boolean = false
+) extends Widget {
   private[this] val dataConnection = JSBus.createConnection
   lazy val currentData = dataConnection biMap JsonCodec.pairSeq
 
@@ -20,7 +20,11 @@ case class Plot(plottable: Plottable,
       scopedScript(
         "require('js/plot', function(f) { f.call(data, this); });",
         ("dataId" -> dataConnection.id) ~
-        ("dataInit" -> JsonCodec.pairSeq.decode(plottable.data))
+        ("dataInit" -> JsonCodec.pairSeq.decode(plottable.data)) ~
+        ("config" -> (
+          ("line" -> line) ~
+          ("points" -> points)
+        ))
       )
     } </svg>
 

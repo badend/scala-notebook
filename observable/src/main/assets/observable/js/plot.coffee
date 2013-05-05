@@ -32,15 +32,28 @@ define(['observable', 'knockout', 'd3', 'css!svg'], (Observable, ko, d3, css) ->
                    .domain([d3.min(data, yf), d3.max(data, yf)])
                    .range([h - m.b, m.t])
 
-      line = d3.svg.line()
-        .x( (d) -> xScale(xf(d)) )
-        .y( (d) -> yScale(yf(d)) )
+      if @config.line
+        line = d3.svg.line()
+          .x( (d) -> xScale(xf(d)) )
+          .y( (d) -> yScale(yf(d)) )
 
-      g = svg.selectAll('path.data').data([data])
-      g.transition().attr('d', line)
-      g.enter().append('path')
-        .attr('class', 'data')
-        .attr('d', line)
+        l = svg.selectAll('path.dataline').data([data])
+        l.transition().attr('d', line)
+        l.enter().append('path')
+          .attr('class', 'dataline')
+          .attr("d", line)
+
+
+      if @config.points
+        point = (d) -> "translate(" + xScale(xf(d)) + "," + yScale(yf(d)) + ")"
+        p = svg.selectAll('path.datapoint').data(data)
+        p.transition()
+          .attr("transform", point)
+        p.enter().append('path')
+          .attr('class', 'datapoint')
+          .attr("transform", point)
+          .attr("d", d3.svg.symbol())
+        p.exit().remove()
 
       xAxis = d3.svg.axis()
         .scale(xScale)
