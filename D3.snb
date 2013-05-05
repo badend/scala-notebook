@@ -2,7 +2,7 @@
   "metadata":{
     "name":"D3",
     "user_save_timestamp":"2013-04-24T12:44:18.835Z",
-    "auto_save_timestamp":"2013-05-05T04:38:45.841Z"
+    "auto_save_timestamp":"2013-05-05T16:14:44.054Z"
   },
   "worksheets":[{
     "cells":[{
@@ -54,14 +54,35 @@
       "input":"val plot = d3.Plot { for (x <- -2d*math.Pi to 2*math.Pi by .1) yield (x, math.sin(x)) }",
       "language":"scala",
       "collapsed":false,
-      "prompt_number":6,
+      "prompt_number":1,
       "outputs":[]
     },{
       "cell_type":"code",
       "input":"plot.currentData <-- Connection.just(for (x <- -2d*math.Pi to 2*math.Pi by .1) yield (x, math.cos(x)))",
       "language":"scala",
       "collapsed":false,
-      "prompt_number":10,
+      "prompt_number":2,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"val plot = d3.Plot.f(math.sin)",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":3,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"d3.Plot.f( 1 / _, .01, .06 )",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":17,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"val plot = d3.Plot( math.sin(_) from -2*math.Pi to 2*math.Pi )",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":9,
       "outputs":[]
     },{
       "cell_type":"code",
