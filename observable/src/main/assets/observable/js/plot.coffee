@@ -5,12 +5,13 @@ define(['observable','knockout','d3'], (Observable, ko, d3) ->
       idxf = (idx) -> (d) -> d[idx]
       xf = idxf(0)
       yf = idxf(1)
+      MGN = 3
       xScale   = d3.scale.linear()
                     .domain([d3.min(data, xf), d3.max(data, xf)])
-                    .range([0, @width])
+                    .range([MGN, @width - MGN])
       yScale   = d3.scale.linear()
                     .domain([d3.min(data, yf), d3.max(data, yf)])
-                    .range([@height, 0])
+                    .range([@height - MGN, MGN])
 
       line = d3.svg.line()
           .x( (d) -> xScale(xf(d)) )
