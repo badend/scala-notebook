@@ -1,3 +1,13 @@
+svg.d3.circles circle {
+    fill: #53A0C6;
+}
+
+svg.d3.line path {
+    fill: none;
+    stroke: #53A0C6;
+    stroke-width: 4;
+}
+
 svg.plot path {
     fill: none;
     stroke: #53A0C6;
@@ -5,16 +15,16 @@ svg.plot path {
 }
 
 svg.plot .axis line {
-  stroke-width: 1;
-  fill: none;
-  stroke: #B3B3B3;
-  opacity: 0.7;
+    stroke-width: 1;
+    fill: none;
+    stroke: #B3B3B3;
+    opacity: 0.7;
 }
 
 svg.plot .axis .domain {
-  stroke-width: 0;
+    stroke-width: 0;
 }
 svg.plot .axis text {
-  font-size: 80%;
-  fill: #222;
+    font-size: 80%;
+    fill: #222;
 }

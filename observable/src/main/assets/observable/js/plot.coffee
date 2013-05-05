@@ -1,6 +1,5 @@
 define(['observable', 'knockout', 'd3', 'css!svg'], (Observable, ko, d3, css) ->
   (elem) ->
-    dataO = Observable.makeObservableArray(@dataId)
     idxf = (idx) -> (d) -> d[idx]
     xf = idxf(0)
     yf = idxf(1)
@@ -22,6 +21,8 @@ define(['observable', 'knockout', 'd3', 'css!svg'], (Observable, ko, d3, css) ->
     svg.append('svg:g')
         .attr('class', 'y axis')
         .attr("transform", "translate(#{ m.l - 2 })")
+
+    dataO = Observable.makeObservableArray(@dataId)
 
     dataO.subscribe( (data) =>
       xScale   = d3.scale.linear()

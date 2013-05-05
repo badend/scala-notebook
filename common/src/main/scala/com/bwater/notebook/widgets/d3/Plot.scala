@@ -9,7 +9,7 @@ import net.liftweb.json.DefaultFormats
 
 case class Plot(plottable: Plottable) extends Widget with D3 {
   private[this] val dataConnection = JSBus.createConnection
-  val currentData = dataConnection biMap JsonCodec.pairSeq
+  lazy val currentData = dataConnection biMap JsonCodec.pairSeq
 
   lazy val toHtml =
     <svg class="d3 plot" width={ width.toString } height={ height.toString }
