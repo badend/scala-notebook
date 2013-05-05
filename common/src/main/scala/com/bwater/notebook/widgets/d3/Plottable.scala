@@ -14,6 +14,11 @@ object Plottable {
   implicit def dataToPlottable(dt: Seq[(Double,Double)]) =
     new Plottable { def data = dt } 
 
+ implicit def data1ToPlottable(dt: Seq[Double]) =
+    new Plottable {
+      val data = for ( (d, idx) <- dt.zipWithIndex) yield (idx.toDouble, d)
+    }
+
   implicit def functionToPlottable(f: (Double => Double)) =
     BoundedFunction(f, -10d, 10d)
 }
