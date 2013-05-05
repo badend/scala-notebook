@@ -6,7 +6,7 @@ trait Plottable {
 
 case class BoundedFunction(f: (Double => Double), min: Double, max: Double) extends Plottable {
   lazy val data =
-    for (x <- min to max by ((max - min) / 1000))
+    for (x <- min to max by (max - min) / 1000)
     yield (x, f(x))
 }
 
