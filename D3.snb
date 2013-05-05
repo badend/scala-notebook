@@ -2,7 +2,7 @@
   "metadata":{
     "name":"D3",
     "user_save_timestamp":"2013-04-24T12:44:18.835Z",
-    "auto_save_timestamp":"2013-05-05T17:05:17.304Z"
+    "auto_save_timestamp":"2013-05-05T17:39:45.723Z"
   },
   "worksheets":[{
     "cells":[{
@@ -67,55 +67,57 @@
       "cell_type":"code",
       "input":"val line = d3.Line { for (x <- 0d to 8*math.Pi by .01) yield math.sin(x) }",
       "language":"scala",
-      "collapsed":true,
+      "collapsed":false,
+      "prompt_number":5,
       "outputs":[]
     },{
       "cell_type":"code",
       "input":"line.currentData <-- Connection.just(for (x <- 0d to 4*math.Pi by .01) yield math.sin(x))",
       "language":"scala",
-      "collapsed":true,
+      "collapsed":false,
+      "prompt_number":9,
       "outputs":[]
     },{
       "cell_type":"code",
-      "input":"val plot = d3.Plot { for (x <- -2d*math.Pi to 2*math.Pi by .1) yield (x, math.sin(x)) }",
+      "input":"\nval plot = d3.Plot { for (x <- -2d*math.Pi to 2*math.Pi by .1) yield (x, math.sin(x)) }",
       "language":"scala",
       "collapsed":false,
-      "prompt_number":1,
+      "prompt_number":10,
       "outputs":[]
     },{
       "cell_type":"code",
       "input":"plot.currentData <-- Connection.just(for (x <- -2d*math.Pi to 2*math.Pi by .1) yield (x, math.cos(x)))",
       "language":"scala",
       "collapsed":false,
-      "prompt_number":2,
+      "prompt_number":11,
       "outputs":[]
     },{
       "cell_type":"code",
       "input":"val plot = d3.Plot.f(math.sin)",
       "language":"scala",
       "collapsed":false,
-      "prompt_number":6,
+      "prompt_number":12,
       "outputs":[]
     },{
       "cell_type":"code",
       "input":"plot.f( 1 / _ )",
       "language":"scala",
       "collapsed":false,
-      "prompt_number":22,
+      "prompt_number":13,
       "outputs":[]
     },{
       "cell_type":"code",
       "input":"plot.f( 1 / _, .01, .06 )",
       "language":"scala",
       "collapsed":false,
-      "prompt_number":21,
+      "prompt_number":14,
       "outputs":[]
     },{
       "cell_type":"code",
       "input":"plot.f( d => math.sin(math.toRadians(d)), -180, 180)",
       "language":"scala",
       "collapsed":false,
-      "prompt_number":20,
+      "prompt_number":15,
       "outputs":[]
     },{
       "cell_type":"code",

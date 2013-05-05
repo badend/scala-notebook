@@ -6,12 +6,12 @@ import net.liftweb.json.JsonAST.{JValue, JArray, JInt}
 import net.liftweb.json.JsonDSL._
 import net.liftweb.json.DefaultFormats
 
-case class Line(data: Seq[Double]) extends Widget with D3 {
+case class Line(data: Seq[Double]) extends Widget {
   private[this] val dataConnection = JSBus.createConnection
   lazy val currentData = dataConnection biMap JsonCodec.doubleSeq
 
   lazy val toHtml =
-    <svg class="d3 line" width={ width.toString } height={ height.toString }
+    <svg class="d3 line" width="800" height="200"
          xmlns="http://www.w3.org/2000/svg" version="1.1">
     {
       scopedScript(

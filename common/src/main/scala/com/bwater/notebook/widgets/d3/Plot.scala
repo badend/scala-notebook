@@ -7,7 +7,9 @@ import net.liftweb.json.JsonDSL._
 import net.liftweb.json.DefaultFormats
 
 
-case class Plot(plottable: Plottable) extends Widget with D3 {
+case class Plot(plottable: Plottable,
+                width: Int = 800,
+                height: Int = 200) extends Widget {
   private[this] val dataConnection = JSBus.createConnection
   lazy val currentData = dataConnection biMap JsonCodec.pairSeq
 
