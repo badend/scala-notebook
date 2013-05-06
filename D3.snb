@@ -2,7 +2,7 @@
   "metadata":{
     "name":"D3",
     "user_save_timestamp":"2013-04-24T12:44:18.835Z",
-    "auto_save_timestamp":"2013-05-05T22:15:20.990Z"
+    "auto_save_timestamp":"2013-05-05T22:18:56.506Z"
   },
   "worksheets":[{
     "cells":[{
@@ -51,7 +51,7 @@
   "autosaved":[{
     "cells":[{
       "cell_type":"heading",
-      "source":"Teaming up with D3",
+      "source":"Dazzling with D3",
       "level":1
     },{
       "cell_type":"heading",
@@ -62,14 +62,14 @@
       "input":"val circles = d3.Circles { for (x <- -10d to 10 by .1) yield x*x }",
       "language":"scala",
       "collapsed":false,
-      "prompt_number":26,
+      "prompt_number":72,
       "outputs":[]
     },{
       "cell_type":"code",
       "input":"circles.currentData <-- Connection.just(for (x <- -10d to 10 by .1) yield -x*x)",
       "language":"scala",
       "collapsed":false,
-      "prompt_number":27,
+      "prompt_number":75,
       "outputs":[]
     },{
       "cell_type":"heading",

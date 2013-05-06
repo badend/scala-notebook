@@ -132,7 +132,8 @@ object NotebookBuild extends Build {
         commonsIO,
         scalaTest,
         // note: scalate 1.5.3 leaves sbt's run task hanging
-        "org.fusesource.scalate" % "scalate-core" % "1.5.2"
+        "org.fusesource.scalate" % "scalate-core" % "1.5.2",
+        dispatch
       )
     )
 
@@ -152,6 +153,8 @@ object NotebookBuild extends Build {
     val slf4jLog4j = "org.slf4j" % "slf4j-log4j12" % "1.6.4"
 
     val scalaTest = "org.scalatest" %% "scalatest" % "1.8" % "test"
+
+    val dispatch = "net.databinder.dispatch" %% "dispatch-core" % "0.9.5"
   }
 
   

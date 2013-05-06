@@ -37,6 +37,13 @@ object JsonCodec {
     def decode(t: Seq[(Double,Double)]): JValue = for ((x,y) <- t) yield Seq(x,y)
     def encode(v: JValue) = for (JArray(Seq(JDouble(x),JDouble(y))) <- v) yield (x,y)
   }
+  val pair = new Codec[JValue, (Double,Double)] {
+    def decode(t: (Double,Double)): JValue = Seq(t._1, t._2)
+    def encode(v: JValue) = {
+      val JArray(Seq(JDouble(x),JDouble(y))) = v
+      (x, y)
+    }
+  }
   val strings = new Codec[JValue, String] {
     def decode(t: String):JValue = {
       JString(t)
