@@ -1,0 +1,146 @@
+{
+  "metadata":{
+    "name":"2. Scaling with SVG",
+    "user_save_timestamp":"2013-05-10T15:40:07.337Z",
+    "auto_save_timestamp":"2013-05-12T07:38:28.470Z"
+  },
+  "worksheets":[{
+    "cells":[{
+      "cell_type":"code",
+      "input":"<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n width=\"200\" height=\"200\" stroke=\"black\" stroke-width=\"0.5\">\n  <circle cx=\"50\" cy=\"50\" r=\"40\" fill=\"#FF8080\"/>\n  <rect x=\"60\" y=\"60\" height=\"50\" width=\"100\" fill=\"#4040FF\" fill-opacity=\".75\"/>\n  <polyline points=\"100,10 130,50 70,50 100,10\" fill=\"green\" fill-opacity=\"0.8\"/>\n  <text x=\"30\" y=\"40\" stroke-width=\"0\">tasty!</text>\n</svg>",
+      "language":"scala",
+      "collapsed":false,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"val slope = for (x <- 0d to 10 by 1) yield x",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":1,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"svg.Circles(slope)",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":2,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"svg.Circles { for (x <- -10d to 10 by .1) yield x*x }",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":3,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"svg.Circles { for (x <- 0d to 8*math.Pi by .1) yield 10*math.cos(x*1) }",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":4,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"svg.Circles { for (x <- .03d to 10 by .1) yield 1d / x }",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":5,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"svg.Lines { for (x <- .03d to 10 by .1) yield 1d / x }",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":6,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"",
+      "language":"scala",
+      "collapsed":true,
+      "outputs":[]
+    }]
+  }],
+  "autosaved":[{
+    "cells":[{
+      "cell_type":"heading",
+      "source":"Scaling with SVG",
+      "level":1
+    },{
+      "cell_type":"code",
+      "input":"<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n width=\"200\" height=\"200\" stroke=\"black\" stroke-width=\"0.5\">\n  <circle cx=\"50\" cy=\"50\" r=\"40\" fill=\"#FF8080\"/>\n  <rect x=\"60\" y=\"60\" height=\"50\" width=\"100\" fill=\"#4040FF\" fill-opacity=\".75\"/>\n  <polyline points=\"100,10 130,50 70,50 100,10\" fill=\"green\" fill-opacity=\"0.8\"/>\n  <text x=\"30\" y=\"40\" stroke-width=\"0\">tasty!</text>\n</svg>",
+      "language":"scala",
+      "collapsed":true,
+      "prompt_number":1,
+      "outputs":[]
+    },{
+      "cell_type":"heading",
+      "source":"Line Up",
+      "level":2
+    },{
+      "cell_type":"code",
+      "input":"val slope = for (x <- 0d to 10 by 1) yield x",
+      "language":"scala",
+      "collapsed":true,
+      "prompt_number":2,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"svg.Circles(slope)",
+      "language":"scala",
+      "collapsed":true,
+      "prompt_number":3,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"svg.Circles { for (x <- -10d to 10 by 1) yield x*x }",
+      "language":"scala",
+      "collapsed":true,
+      "prompt_number":13,
+      "outputs":[]
+    },{
+      "cell_type":"heading",
+      "source":"Filling in the blanks",
+      "level":2
+    },{
+      "cell_type":"code",
+      "input":"svg.Circles { for (x <- -10d to 10 by .1) yield x*x }",
+      "language":"scala",
+      "collapsed":true,
+      "prompt_number":12,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"svg.Circles { for (x <- 0d to 8*math.Pi by .1) yield 10*math.sin(x*1) }",
+      "language":"scala",
+      "collapsed":true,
+      "prompt_number":18,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"svg.Circles { for (x <- .03d to 10 by .1) yield 1d / x }",
+      "language":"scala",
+      "collapsed":true,
+      "prompt_number":17,
+      "outputs":[]
+    },{
+      "cell_type":"heading",
+      "source":"Connecting the dots",
+      "level":2
+    },{
+      "cell_type":"code",
+      "input":"svg.Line { for (x <- .03d to 10 by .1) yield 1d / x }",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":21,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"",
+      "language":"scala",
+      "collapsed":true,
+      "outputs":[]
+    }]
+  }],
+  "nbformat":3
+}

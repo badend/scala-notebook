@@ -1,6 +1,7 @@
-define(['observable','knockout','d3', 'css!svg'], (Observable, ko, d3) ->
+define(['observable','knockout','d3', 'css!svg'], (Observable, ko, d3, css) ->
   (elem) ->
     svg = d3.select(elem)
+
     w = Number(svg.attr('width'))
     h = Number(svg.attr('height'))
 
