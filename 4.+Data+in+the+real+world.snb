@@ -1,0 +1,181 @@
+{
+  "metadata":{
+    "name":"4. Data in the real world",
+    "user_save_timestamp":"2013-05-12T11:27:00.570Z",
+    "auto_save_timestamp":"2013-05-12T12:02:18.849Z"
+  },
+  "worksheets":[{
+    "cells":[{
+      "cell_type":"code",
+      "input":"import dispatch._\n\nval api = host(\"api.meetup.com\").secure\n\nval cities = Http(api / \"2\" / \"cities\" <<? Map(\"page\" -> \"2\") OK as.String)",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":19,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"import net.liftweb.json._\nval parsed = parse(cities())",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":20,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"for (JString(name) <- parsed \\\\ \"city\") yield name",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":21,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"val coords = for {\n  JObject(result) <- parsed \\\\ \"results\"\n  JDouble(lat) <- result \\ \"lat\"\n  JDouble(lon) <- result \\ \"lon\"\n} yield (lat, lon)",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":22,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"coords(0)",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":23,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"val globe = d3.Globe(0,0)",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":3,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"globe(80,-90)",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":7,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"val nameBox = new InputBox(\"\")\nval cityBox = new InputBox(\"\")\nval groupBox = new InputBox(\"\")\nval strm = host(\"stream.meetup.com\")\nval mover = as.stream.Lines { str =>\n  val parsed = parse(str)\n  for {\n    JDouble(lat) <- parsed \\\\ \"group_lat\"\n    JDouble(lon) <- parsed \\\\ \"group_lon\"\n    JString(city) <- parsed \\\\ \"group_city\"\n    JString(country) <- parsed \\\\ \"group_country\" if country != \"us\"\n    JString(group) <- parsed \\\\ \"group_name\"\n    JString(name) <- parsed \\\\ \"member_name\"\n  } {\n    globe(lat, lon)\n    cityBox.currentValue <-- Connection.just(\"%s, %s\".format(city, country.toUpperCase))\n    nameBox.currentValue <-- Connection.just(name)\n    groupBox.currentValue <-- Connection.just(group)\n  }\n}\nval rsvps = Http(strm / \"2\" / \"rsvps\" > mover)\nnameBox ++ cityBox ++ groupBox",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":28,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"mover.stop()",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":27,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"",
+      "language":"scala",
+      "collapsed":true,
+      "outputs":[]
+    }]
+  }],
+  "autosaved":[{
+    "cells":[{
+      "cell_type":"heading",
+      "source":"Data in the real world",
+      "level":1
+    },{
+      "cell_type":"code",
+      "input":"import dispatch._\n\nval api = host(\"api.meetup.com\")\n\nval cities = Http(api / \"2\" / \"cities\" <<? Map(\"page\" -> \"2\") OK as.String)",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":4,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"import net.liftweb.json._\nval parsed = parse(cities())",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":20,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"for (JString(name) <- parsed \\\\ \"city\") yield name",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":21,
+      "outputs":[]
+    },{
+      "cell_type":"heading",
+      "source":"Representing the real world",
+      "level":2
+    },{
+      "cell_type":"code",
+      "input":"val coords = for {\n  JObject(result) <- parsed \\\\ \"results\"\n  JDouble(lat) <- result \\ \"lat\"\n  JDouble(lon) <- result \\ \"lon\"\n} yield (lat, lon)",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":22,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"coords(0)",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":23,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"val globe = d3.Globe(coords(0))",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":7,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"globe(80,-90)",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":8,
+      "outputs":[]
+    },{
+      "cell_type":"heading",
+      "source":"Live hacking",
+      "level":2
+    },{
+      "cell_type":"code",
+      "input":"val nameBox = new InputBox(\"\")\nval cityBox = new InputBox(\"\")\nval groupBox = new InputBox(\"\")\nnameBox ++ cityBox ++ groupBox",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":28,
+      "outputs":[]
+    },{
+      "cell_type":"heading",
+      "source":"RSVPs in the real world",
+      "level":2
+    },{
+      "cell_type":"code",
+      "input":"val mover = as.stream.Lines { str =>\n  val parsed = parse(str)\n  for {\n    JDouble(lat) <- parsed \\\\ \"group_lat\"\n    JDouble(lon) <- parsed \\\\ \"group_lon\"\n    JString(city) <- parsed \\\\ \"group_city\"\n    JString(country) <- parsed \\\\ \"group_country\" if country != \"us\"\n    JString(group) <- parsed \\\\ \"group_name\"\n    JString(name) <- parsed \\\\ \"member_name\"\n  } {\n    globe(lat, lon)\n    cityBox.currentValue <-- Connection.just(\"%s, %s\".format(city, country.toUpperCase))\n    nameBox.currentValue <-- Connection.just(name)\n    groupBox.currentValue <-- Connection.just(group)\n  }\n}",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":1,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"val strm = host(\"stream.meetup.com\")\nval rsvps = Http(strm / \"2\" / \"rsvps\" > mover)",
+      "language":"scala",
+      "collapsed":true,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"mover.stop()",
+      "language":"scala",
+      "collapsed":false,
+      "prompt_number":27,
+      "outputs":[]
+    },{
+      "cell_type":"code",
+      "input":"",
+      "language":"scala",
+      "collapsed":false,
+      "outputs":[]
+    }]
+  }],
+  "nbformat":3
+}
