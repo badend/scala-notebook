@@ -1,7 +1,7 @@
 {
   "metadata":{
-    "name":"1. An HTML-mode REPL",
-    "user_save_timestamp":"2013-05-10T15:38:38.871Z",
+    "name":"2. An HTML-mode REPL",
+    "user_save_timestamp":"2013-05-13T11:41:30.709Z",
     "auto_save_timestamp":"2013-05-12T07:07:37.066Z"
   },
   "worksheets":[{
@@ -67,68 +67,6 @@
       "outputs":[]
     }]
   }],
-  "autosaved":[{
-    "cells":[{
-      "cell_type":"heading",
-      "source":"An HTML-mode REPL",
-      "level":1
-    },{
-      "cell_type":"code",
-      "input":"def fact(n: Int):Int = if (n == 0) 1 else n*fact(n-1)",
-      "language":"scala",
-      "collapsed":true,
-      "prompt_number":14,
-      "outputs":[]
-    },{
-      "cell_type":"code",
-      "input":"fact(10)",
-      "language":"scala",
-      "collapsed":true,
-      "prompt_number":15,
-      "outputs":[]
-    },{
-      "cell_type":"heading",
-      "source":"Representing Data",
-      "level":2
-    },{
-      "cell_type":"code",
-      "input":"for (n <- 1 to 10) yield fact(n)",
-      "language":"scala",
-      "collapsed":true,
-      "prompt_number":18,
-      "outputs":[]
-    },{
-      "cell_type":"code",
-      "input":"for (x <- -10d to 10 by .1) yield x*x",
-      "language":"scala",
-      "collapsed":true,
-      "prompt_number":26,
-      "outputs":[]
-    },{
-      "cell_type":"heading",
-      "source":"Speaking HTML",
-      "level":2
-    },{
-      "cell_type":"code",
-      "input":"<strong>Hello!</strong>",
-      "language":"scala",
-      "collapsed":true,
-      "prompt_number":27,
-      "outputs":[]
-    },{
-      "cell_type":"code",
-      "input":"<table>{ for (row <- 1 to 5) yield \n  <tr>{ for (col <- 1 to 4) yield <td>{row*col}</td> }</tr>\n} </table>",
-      "language":"scala",
-      "collapsed":true,
-      "prompt_number":28,
-      "outputs":[]
-    },{
-      "cell_type":"code",
-      "input":"",
-      "language":"scala",
-      "collapsed":true,
-      "outputs":[]
-    }]
-  }],
+  "autosaved":[],
   "nbformat":3
 }

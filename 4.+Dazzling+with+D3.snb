@@ -1,140 +1,10 @@
 {
   "metadata":{
-    "name":"3. Dazzling with D3",
-    "user_save_timestamp":"2013-05-12T08:02:39.034Z",
+    "name":"4. Dazzling with D3",
+    "user_save_timestamp":"2013-05-13T11:42:07.678Z",
     "auto_save_timestamp":"2013-05-12T10:32:28.569Z"
   },
   "worksheets":[{
-    "cells":[{
-      "cell_type":"heading",
-      "source":"Dazzling with D3",
-      "level":1
-    },{
-      "cell_type":"heading",
-      "source":"Circles",
-      "level":2
-    },{
-      "cell_type":"code",
-      "input":"val circles = d3.Circles { for (x <- -10d to 10 by .1) yield x*x }",
-      "language":"scala",
-      "collapsed":false,
-      "prompt_number":29,
-      "outputs":[]
-    },{
-      "cell_type":"code",
-      "input":"circles.currentData <-- Connection.just(for (x <- -10d to 10 by .1) yield -x*x)",
-      "language":"scala",
-      "collapsed":false,
-      "prompt_number":30,
-      "outputs":[]
-    },{
-      "cell_type":"heading",
-      "source":"Lines",
-      "level":2
-    },{
-      "cell_type":"code",
-      "input":"val line = d3.Line { for (x <- 0d to 8*math.Pi by .01) yield math.sin(x) }",
-      "language":"scala",
-      "collapsed":false,
-      "prompt_number":31,
-      "outputs":[]
-    },{
-      "cell_type":"code",
-      "input":"line.currentData <-- Connection.just(for (x <- 0d to 4*math.Pi by .01) yield math.sin(x))",
-      "language":"scala",
-      "collapsed":false,
-      "prompt_number":32,
-      "outputs":[]
-    },{
-      "cell_type":"heading",
-      "source":"Plots",
-      "level":2
-    },{
-      "cell_type":"code",
-      "input":"val plot = d3.Plot { for (x <- -2d*math.Pi to 2*math.Pi by .1) yield (x, math.sin(x)) }",
-      "language":"scala",
-      "collapsed":false,
-      "prompt_number":33,
-      "outputs":[]
-    },{
-      "cell_type":"code",
-      "input":"plot.currentData <-- Connection.just(for (x <- -2d*math.Pi to 2*math.Pi by .1) yield (x, math.cos(x)))",
-      "language":"scala",
-      "collapsed":false,
-      "prompt_number":34,
-      "outputs":[]
-    },{
-      "cell_type":"heading",
-      "source":"Plotting functions",
-      "level":2
-    },{
-      "cell_type":"code",
-      "input":"val plot = d3.Plot.f(math.sin)",
-      "language":"scala",
-      "collapsed":false,
-      "prompt_number":35,
-      "outputs":[]
-    },{
-      "cell_type":"code",
-      "input":"plot.f( 1 / _ )",
-      "language":"scala",
-      "collapsed":false,
-      "prompt_number":36,
-      "outputs":[]
-    },{
-      "cell_type":"code",
-      "input":"plot.f( 1 / _, .01, .1 )",
-      "language":"scala",
-      "collapsed":false,
-      "prompt_number":37,
-      "outputs":[]
-    },{
-      "cell_type":"code",
-      "input":"plot.f( d => math.sin(math.toRadians(d)), -180, 180)",
-      "language":"scala",
-      "collapsed":false,
-      "prompt_number":38,
-      "outputs":[]
-    },{
-      "cell_type":"markdown",
-      "source":"### Random Walks"
-    },{
-      "cell_type":"code",
-      "input":"def rand = Stream.continually((scala.util.Random.nextDouble - .5)*4)\ndef gaus = Stream.continually(scala.util.Random.nextGaussian)\n\nval scatter = d3.Plot(rand.take(500), line=false, points=true)",
-      "language":"scala",
-      "collapsed":false,
-      "prompt_number":39,
-      "outputs":[]
-    },{
-      "cell_type":"code",
-      "input":"scatter(rand.take(500))",
-      "language":"scala",
-      "collapsed":false,
-      "prompt_number":40,
-      "outputs":[]
-    },{
-      "cell_type":"code",
-      "input":"def cml(s: Stream[Double], last: Double = 0d): Stream[Double] =\n  (s.head + last) #:: cml(s.tail, s.head + last)\n\nval rplot = d3.Plot(cml(rand).take(100))",
-      "language":"scala",
-      "collapsed":false,
-      "prompt_number":41,
-      "outputs":[]
-    },{
-      "cell_type":"code",
-      "input":"rplot(cml(gaus).take(100))",
-      "language":"scala",
-      "collapsed":false,
-      "prompt_number":44,
-      "outputs":[]
-    },{
-      "cell_type":"code",
-      "input":"",
-      "language":"scala",
-      "collapsed":true,
-      "outputs":[]
-    }]
-  }],
-  "autosaved":[{
     "cells":[{
       "cell_type":"heading",
       "source":"Dazzling with D3",
@@ -283,5 +153,6 @@
       "outputs":[]
     }]
   }],
+  "autosaved":[],
   "nbformat":3
 }
